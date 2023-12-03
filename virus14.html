@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus14 Download</title>
+    <style>
+        body {
+            font-family: "黑体", Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3.1em;
+        }
+
+        .downloadbox {
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        .downloadbox a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+        }
+
+        .copyright {
+            font-family: "微软雅黑", Times, serif;
+        }
+
+        .copyright-text {
+            font-size: 0.8em;
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Virus14</h1>
+    <div class="downloadbox">
+        <p><a href="#" downlink="#">完全版（正在开发中）</a></p>
+        <p><a href="#" downlink="/demo.exe">演示版</a></p>
+    </div>
+    <p class="copyright-text">Copyright © 2023 鸡景行. All Rights Reserved.</p>
+</body>
+   <script>
+        // 获取所有带有 downlink 属性的链接
+        const downloadLinks = document.querySelectorAll('a[downlink]');
+
+        // 遍历每个链接并添加点击事件监听器
+        downloadLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                // 阻止默认点击事件
+                event.preventDefault();
+                
+                // 获取 downlink 属性的值
+                const downlink = this.getAttribute('downlink');
+                
+                // 创建一个虚拟链接用于下载
+                const virtualLink = document.createElement('a');
+                virtualLink.href = downlink;
+                virtualLink.setAttribute('download', ''); // 强制下载
+                virtualLink.style.display = 'none';
+                
+                // 将虚拟链接添加到文档中并模拟点击
+                document.body.appendChild(virtualLink);
+                virtualLink.click();
+                document.body.removeChild(virtualLink);
+            });
+        });
+    </script>
+</html>
